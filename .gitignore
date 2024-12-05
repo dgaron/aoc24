@@ -1,0 +1,15 @@
+# No mac garbage
+*.DS_Store
+
+# Ignore input files
+input.txt
+
+# Everything
+*
+# Just kidding, not directories
+!/*
+# Or stuff with an extension
+!*.*
+
+# settings.json are you kidding me
+settings.json
