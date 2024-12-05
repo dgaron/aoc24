@@ -13,3 +13,6 @@ input.txt
 
 # settings.json are you kidding me
 settings.json
+
+# no scripts
+*.sh

@@ -22,10 +22,8 @@ int main() {
 
     for (std::size_t i = 0; i < raw_data.size(); ++i) {
         iss.str(raw_data[i]);
-        while (iss) {
-            iss >> a;
+        while (iss >> a >> b) {
             left[i] = a;
-            iss >> b;
             right[i] = b;
         }
         iss.clear();
