@@ -5,19 +5,9 @@
 #include <sstream>
 #include <vector>
 #include <algorithm>
-#include <map>
+#include <unordered_map>
 
 #include "bobo_utils.h"
-
-int count_appearances(const std::vector<int> &v, int target) {
-    int result = 0;
-    for (auto n : v) {
-        if (n == target) {
-            ++result;
-        }
-    }
-    return result;
-}
 
 int main() {
 
@@ -54,11 +44,11 @@ int main() {
 
     // Part Two
     result = 0;
-    std::map<int, int> counts;
+    std::unordered_map<int, int> counts;
+    for (std::size_t i = 0; i < right.size(); ++i) {
+        ++counts[right[i]];
+    }
     for (std::size_t i = 0; i < left.size(); ++i) {
-        if (auto search = counts.find(left[i]); search == counts.end()) {
-            counts[left[i]] = count_appearances(right, left[i]); 
-        }
         result += left[i] * counts[left[i]];
     }
 
