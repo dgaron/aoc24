@@ -9,19 +9,19 @@
 
 #define MAX_DISTANCE 3
 
-bool is_level_safe(const std::vector<int>& level) {
+bool is_report_safe(const std::vector<int>& report) {
     bool safe = true;
     bool increasing = true;
     bool decreasing = true;
-    for (std::size_t i = 0; i < level.size()-1; ++i) {
-        if (level[i] < level[i+1]) {
+    for (std::size_t i = 0; i < report.size()-1; ++i) {
+        if (report[i] < report[i+1]) {
             decreasing = false;
-        } else if (level[i] > level[i+1]) {
+        } else if (report[i] > report[i+1]) {
             increasing = false;
-        } else if (level[i] == level[i+1]) {
+        } else if (report[i] == report[i+1]) {
             return false;
         }
-        if (abs(level[i] - level[i+1]) > MAX_DISTANCE) {
+        if (abs(report[i] - report[i+1]) > MAX_DISTANCE) {
             safe = false;
         }
     }
@@ -37,14 +37,14 @@ int main() {
 
     std::istringstream iss;
     for (const auto &s : raw_data) {
-        std::vector<int> current_level;
+        std::vector<int> current_report;
         int n;
         iss.str(s);
         while(iss >> n) {
-            current_level.push_back(n);
+            current_report.push_back(n);
         }
 
-        bool safe = is_level_safe(current_level);
+        bool safe = is_report_safe(current_report);
         // result += safe; is too ugly
         if (safe) {
             ++result;
