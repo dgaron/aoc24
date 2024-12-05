@@ -41,5 +41,5 @@ int main() {
         result += left[i] * counts[left[i]];
     }
 
-    std::cout << "The result for part two is: " << result << '\n';
+    std::cout << "Result: " << result << '\n';
 }

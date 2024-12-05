@@ -23,19 +23,21 @@ int main() {
             current.push_back(n);
         }
 
-        bool safe = false;
-        int lt_count = 0;
-        int gt_count = 0;
+        bool safe = true;
+        std::size_t lt_count = 0;
+        std::size_t gt_count = 0;
         for (std::size_t i = 1; i < current.size(); ++i) {
             if (current[i] < current[i-1]) {
                 ++lt_count;
             } else if (current[i] > current[i-1]) {
                 ++gt_count;
             }
-            safe |= abs(current[i] - current[i-1]) <= MAX_DISTANCE;
+            if (abs(current[i] - current[i-1]) > MAX_DISTANCE) {
+                safe = false;
+            }
         }
 
-        if (lt_count != current.size() || gt_count != current.size()-1) {
+        if (lt_count != current.size()-1 && gt_count != current.size()-1) {
             safe = false;
         }
 
@@ -44,5 +46,5 @@ int main() {
         }
         iss.clear();
     }
-    std::cout << "Part one result: " << result << '\n';        
+    std::cout << "Result: " << result << '\n';        
 }
