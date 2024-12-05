@@ -18,30 +18,21 @@ int main() {
 
     std::istringstream iss;
 
-    int a,b;
-
     for (std::size_t i = 0; i < raw_data.size(); ++i) {
         iss.str(raw_data[i]);
+        int a, b;
         while (iss >> a >> b) {
             left[i] = a;
             right[i] = b;
         }
         iss.clear();
     }
-
-    // Part One
+    
     std::sort(left.begin(), left.end());
     std::sort(right.begin(), right.end());
 
     long result = 0;
-    for (std::size_t i = 0; i < left.size(); ++i) {
-        result += abs(left[i] - right[i]);
-    }
 
-    std::cout << "The result for part one is: " << result << '\n';
-
-    // Part Two
-    result = 0;
     std::unordered_map<int, int> counts;
     for (std::size_t i = 0; i < right.size(); ++i) {
         ++counts[right[i]];
